@@ -36,10 +36,10 @@ public class AddFacesToCollection {
         System.out.println("Faces indexed:");
         List<FaceRecord> faceRecords = indexFacesResult.getFaceRecords();
         for (FaceRecord faceRecord : faceRecords) {
-            System.out.println("  Face ID: " + faceRecord.getFace().getFaceId());
+          //  System.out.println("  Face ID: " + faceRecord.getFace().getFaceId());
             System.out.println("  External Face ID: " + faceRecord.getFace().getExternalImageId());
 
-            System.out.println("  Location:" + faceRecord.getFaceDetail().getBoundingBox().toString());
+            //System.out.println("  Location:" + faceRecord.getFaceDetail().getBoundingBox().toString());
         }
 
         List<UnindexedFace> unindexedFaces = indexFacesResult.getUnindexedFaces();
