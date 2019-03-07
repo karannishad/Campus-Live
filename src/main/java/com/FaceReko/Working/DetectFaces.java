@@ -26,6 +26,7 @@ import com.amazonaws.services.rekognition.model.Gender;
 import com.amazonaws.services.rekognition.model.Image;
 import com.amazonaws.services.rekognition.model.Pose;
 import com.amazonaws.util.IOUtils;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 public class DetectFaces {
@@ -35,7 +36,7 @@ public class DetectFaces {
 
     String photo = "/home/consultadd/Downloads/index.jpeg";
     //String bucket = "elasticbeanstalk-ap-south-1-312872316571";
-    AWSCredentials credentials= new ProfileCredentialsProvider().getCredentials();;
+    AWSCredentials credentials= new ProfileCredentialsProvider().getCredentials();
     
 //    try {
 //		credentials= new ProfileCredentialsProvider().getCredentials();
@@ -71,8 +72,8 @@ public class DetectFaces {
            
          
 
-//           ObjectMapper objectMapper = new ObjectMapper();
-//           System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(face));
+           ObjectMapper objectMapper = new ObjectMapper();
+           System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(face));
         }
 
      } catch (AmazonRekognitionException e) {
