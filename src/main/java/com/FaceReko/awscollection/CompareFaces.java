@@ -43,11 +43,11 @@ public class CompareFaces {
 //                .withBytes(sourceImageBytes);
         Image target=new Image()
                 .withBytes(targetImageBytes);
-
+    for(int i=1;i<3;i++){
         CompareFacesRequest request = new CompareFacesRequest()
                 .withSourceImage(new Image().withS3Object(new S3Object()
                         .withBucket("imagefacereko")
-                        .withName("index.jpeg")))
+                        .withName(i+".jpeg")))
                 .withTargetImage(target)
                 .withSimilarityThreshold(similarityThreshold);
 
@@ -66,9 +66,10 @@ public class CompareFaces {
                     + "% confidence."+ match.toString());
 
         }
-        List<ComparedFace> uncompared = compareFacesResult.getUnmatchedFaces();
-
-        System.out.println("There was " + uncompared.size()
-                + " face(s) that did not match");
+//        List<ComparedFace> uncompared = compareFacesResult.getUnmatchedFaces();
+//
+//        System.out.println("There was " + uncompared.size()
+//                + " face(s) that did not match");
+       }
     }
 }
