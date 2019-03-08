@@ -17,7 +17,7 @@ import java.util.List;
 
 public class SearchFaceMatchingImageCollection {
     public static final String collectionId = "MyCollection";
-    public static final String photo = "/home/consultadd/Downloads/target.jpeg";
+    public static final String photo = "/home/consultadd/Downloads/index.jpeg";
 
     public static void main(String[] args) throws Exception {
 

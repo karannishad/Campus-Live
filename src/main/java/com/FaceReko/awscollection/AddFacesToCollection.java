@@ -15,7 +15,7 @@ import java.util.List;
 public class AddFacesToCollection {
     public static final String collectionId = "MyCollection";
     public static void main(String[] args) throws Exception {
-        String photo = "/home/consultadd/Downloads/source.jpeg";
+        String photo = "/home/consultadd/Downloads/index.jpeg";
         AmazonRekognition amazonRekognition= Credentials.getClient();
         ByteBuffer imagebyte;
         try(InputStream inputStream =new FileInputStream(new File(photo)) ){
@@ -26,7 +26,7 @@ public class AddFacesToCollection {
 
         IndexFacesRequest indexFacesRequest = new IndexFacesRequest()
                 .withImage(image)
-                .withExternalImageId("try_face")
+                .withExternalImageId("OneD")
                 .withMaxFaces(10)
                 .withCollectionId(collectionId)
                 .withDetectionAttributes("ALL");
