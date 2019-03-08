@@ -19,7 +19,7 @@ public class CompareFaces {
         Float similarityThreshold = 70F;
         String targetImage = "/home/consultadd/Downloads/index.jpeg";
         ByteBuffer targetImageBytes=null;
-        String ResultsPrint=null;
+        String ResultsPrint="";
         AmazonRekognition rekognitionClient = Credentials.getClient();
         AmazonS3 s3= Credentials.getS3Client();
 
@@ -51,16 +51,16 @@ public class CompareFaces {
 
     // Display results
                  List<CompareFacesMatch> faceDetails = compareFacesResult.getFaceMatches();
-            for (CompareFacesMatch match: faceDetails){
-                    ResultsPrint+=os.getKey();
-//            ComparedFace face= match.getFace();
-//            BoundingBox position = face.getBoundingBox();
-//            System.out.println("Face at " + position.getLeft().toString()
+                for (CompareFacesMatch match: faceDetails){
+                    ResultsPrint=ResultsPrint+"\n"+os.getKey();
+//                ComparedFace face= match.getFace();
+//                 BoundingBox position = face.getBoundingBox();
+//                System.out.println("Face at " + position.getLeft().toString()
 //                    + " " + position.getTop()
 //                    + " matches with " + match.getSimilarity().toString()
 //                    + "% confidence."+ match.toString());
 
-             }
+                 }
 //             List<ComparedFace> uncompared = compareFacesResult.getUnmatchedFaces();
 //
 //            System.out.println("There was " + uncompared.size()
