@@ -4,29 +4,21 @@ package com.FaceReko.Working;
 
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.List;
-
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.rekognition.AmazonRekognition;
 import com.amazonaws.services.rekognition.AmazonRekognitionClientBuilder;
-import com.amazonaws.services.rekognition.model.AgeRange;
-import com.amazonaws.services.rekognition.model.AmazonRekognitionException;
-import com.amazonaws.services.rekognition.model.Attribute;
-import com.amazonaws.services.rekognition.model.DetectFacesRequest;
-import com.amazonaws.services.rekognition.model.DetectFacesResult;
-import com.amazonaws.services.rekognition.model.FaceDetail;
-import com.amazonaws.services.rekognition.model.Gender;
-import com.amazonaws.services.rekognition.model.Image;
-import com.amazonaws.services.rekognition.model.Pose;
+import com.amazonaws.services.rekognition.model.*;
 import com.amazonaws.util.IOUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.List;
 
 
 public class DetectFaces {
@@ -62,6 +54,7 @@ public class DetectFaces {
 
         for (FaceDetail face: faceDetails) {
         	Pose pose=face.getPose();
+
         		Gender gen=face.getGender();
               AgeRange ageRange = face.getAgeRange();
               System.out.println("pserson pose is "+pose.toString());

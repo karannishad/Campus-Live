@@ -15,7 +15,7 @@ import java.util.List;
 public class AddFacesToCollection {
     public static final String collectionId = "MyCollection";
     public static void main(String[] args) throws Exception {
-        String photo = "/home/consultadd/Downloads/index.jpeg";
+        String photo = "/home/consultadd/Downloads/source.jpeg";
         AmazonRekognition amazonRekognition= Credentials.getClient();
         ByteBuffer imagebyte;
         try(InputStream inputStream =new FileInputStream(new File(photo)) ){
