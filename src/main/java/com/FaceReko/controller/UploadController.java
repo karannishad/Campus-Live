@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.IOException;
@@ -29,7 +30,8 @@ public class UploadController {
     }
 
     @PostMapping("/uploadFile")
-    public String uploadFile(@RequestParam("file") MultipartFile file) {
+    public ModelAndView uploadFile(@RequestParam("file") MultipartFile file) {
+         ModelAndView mav =null;
         try {
             AttendanceRecord attendanceRecord = attendanceRecordService.storeFile(file);
             String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -38,13 +40,15 @@ public class UploadController {
                 .toUriString();
 
             List<String> result = CompareFaces.getAttendance(attendanceRecord);
-            System.out.println(result);
-            return "";
+            mav=new ModelAndView("success");
+            mav.addObject("studentList",result);
+            return mav;
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return "";
+        mav=new ModelAndView("fail");
+        return mav;
     }
 
     @GetMapping("/downloadFile/{fileId}")
