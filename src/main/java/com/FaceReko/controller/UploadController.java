@@ -26,7 +26,7 @@ public class UploadController {
 
      @RequestMapping("/")
     public String index() {
-        return "upload";
+        return "registration";
     }
 
     @PostMapping("/uploadFile")

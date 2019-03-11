@@ -51,6 +51,11 @@
 			<version>1.11.512</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.oracle.java/jre -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
+		</dependency>
 
 
 
