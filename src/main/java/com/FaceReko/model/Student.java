@@ -1,5 +1,7 @@
 package com.FaceReko.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -9,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Student {
+public class  Student {
 
     @Id
     @NotBlank
@@ -20,9 +22,9 @@ public class Student {
     @Size(max = 100)
     private String password;
 
-    @Max(25)
+
     private String name;
-    @Max(10)
+
     private Long phone;
 
 
@@ -30,7 +32,8 @@ public class Student {
     private String branch;
     @Email
     private String email;
-
+    @Lob
+    private byte[] image;
 
 
     public Student()
@@ -38,10 +41,6 @@ public class Student {
 
     }
 
-    public Student(@NotBlank @Size(max = 12) String enrollId, @NotBlank @Size(max = 100) String password) {
-        this.enrollId = enrollId;
-        this.password = password;
-    }
 
 
 
@@ -49,7 +48,15 @@ public class Student {
         return enrollId;
     }
 
-    public Student(@NotBlank @Size(max = 12) String enrollId, @NotBlank @Size(max = 100) String password, @Max(25) String name, @Max(10) Long phone, String gender, String branch, @Email String email) {
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public Student(@NotBlank @Size(max = 12) String enrollId, @NotBlank @Size(max = 100) String password, String name, Long phone, String gender, String branch, @Email String email, byte[] image) {
         this.enrollId = enrollId;
         this.password = password;
         this.name = name;
@@ -57,8 +64,8 @@ public class Student {
         this.gender = gender;
         this.branch = branch;
         this.email = email;
-
-
+        try{
+        this.image = image;}catch (Exception r){}
     }
 
     public void setEnrollId(String enrollId) {

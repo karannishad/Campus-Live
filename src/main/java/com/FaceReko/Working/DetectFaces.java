@@ -22,14 +22,14 @@ import java.util.List;
 
 
 public class DetectFaces {
- 
- 
+
+
  public static void main(String[] args) throws Exception {
 
     String photo = "/home/consultadd/Downloads/index.jpeg";
     //String bucket = "elasticbeanstalk-ap-south-1-312872316571";
-    AWSCredentials credentials= new ProfileCredentialsProvider().getCredentials();
-    
+     AWSCredentials credentials= new ProfileCredentialsProvider().getCredentials();
+
 //    try {
 //		credentials= new ProfileCredentialsProvider().getCredentials();
 //	} catch (Exception e) {
@@ -74,13 +74,13 @@ public class DetectFaces {
      }
 
 //
-//    DetectLabelsRequest request = new DetectLabelsRequest()
+//    detectFacesRequest request = new detectFacesRequest()
 //       .withImage(new Image()
 //        .withBytes(imagebyte))
 //          .withMaxLabels(10).withMinConfidence(55F);
 //
 //    try {
-//       DetectLabelsResult result = rekognitionClient.detectLabels(request);
+//       detectFacesResult result = rekognitionClient.detectFaces(request);
 //       List < Label > labels = result.getLabels();
 //
 //       for (Label label:labels) {

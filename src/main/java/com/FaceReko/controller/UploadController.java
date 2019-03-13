@@ -26,13 +26,15 @@ public class UploadController {
 
      @RequestMapping("/")
     public String index() {
-        return "registration";
+        return "index";
     }
 
     @PostMapping("/uploadFile")
     public ModelAndView uploadFile(@RequestParam("file") MultipartFile file) {
          ModelAndView mav =null;
         try {
+
+
             AttendanceRecord attendanceRecord = attendanceRecordService.storeFile(file);
             String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                     .path("/downloadFile/")

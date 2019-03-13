@@ -5,6 +5,7 @@ import com.FaceReko.model.Student;
 import com.FaceReko.repository.StudentRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @RestController
@@ -20,23 +22,36 @@ public class AuthController {
     @Autowired
     StudentRepository studentRepository;
 
-    @PostMapping(value = "/studentregistration",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ModelAndView registerUser(@ModelAttribute Student student) {
-        ModelAndView mav=null;
-        System.out.println(student.getEmail());
-//        JSONObject object = new JSONObject(studentDetails);
+    @RequestMapping("/login")
+    public String login(){
 
-//
-//        String name=object.optString("name");
-//        String enrollId=object.optString("enroll");
-//        String sex=object.optString("sex");
-//        String branch=object.optString("branch");
-//        String email=object.optString("email");
-//        String password=object.optString("password");
-//        Long mobile=object.optLong("mobile");
-//        Student student=new Student(enrollId,password,name,mobile,sex,branch,email);
-//        studentRepository.save(student);
-        mav=new ModelAndView("success", HttpStatus.CREATED);
+        return "redirect:/login";
+
+    }
+
+    @RequestMapping("/checkLogin")
+    public String loginRequest(HttpSession httpSession){
+        Student student=studentRepository.findByEnrollId("0818IT151019");
+
+
+            httpSession.setAttribute("id",student.getEnrollId());
+        return "home";
+
+    }
+    @RequestMapping("/studentregistration")
+    public ModelAndView registerUser(@ModelAttribute Student student, HttpSession httpSession) throws Exception {
+        ModelAndView mav=null;
+        if(httpSession.getAttribute("id")==null)
+            httpSession.setAttribute("id",student.getEnrollId());
+        studentRepository.save(student);
+        mav=new ModelAndView("setImage", HttpStatus.CREATED);
         return mav;
+    }
+
+    @RequestMapping("/logout")
+    public String logoutRequest(HttpSession httpSession){
+
+        httpSession.invalidate();;
+        return "redirect:/";
     }
 }
