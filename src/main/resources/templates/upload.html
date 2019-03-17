@@ -1,24 +1,81 @@
-<html xmlns:th="http://www.thymeleaf.org">
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JSP Page</title>
+    <style>
+            *{
+                font-family: arial;
+            }
+            body{
+                text-transform: uppercase;
+            }
+            th, td {
+              padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+        </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
-<div th:if="${message}">
-    <h2 th:text="${message}"/>
-</div>
+<form action="/uploadAttendance" method="post">
 
-<div>
-    <form method="POST" enctype="multipart/form-data" action="/uploadFile">
-        <table>
-            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-        </table>
-    </form>
-</div>
 
+    <table class="table table-striped table-bordered responsive">
+
+        <tr>            <td>
+            <h5>Subject</h5> </td>
+            <td>
+
+
+                <select class="form-control" name="subject" style="width:250px;">
+                    <option value='IT6001'>IT6001</option>
+                    <option value='IT6002'>IT6002</option>
+
+                </select>
+
+
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <h5>BRANCH</h5>
+            </td>
+            <td>
+                <select class="form-control" name="branch" style="width:250px;" >
+                    <option value='Computer Science'>Computer Science</option>
+                    <option value='Information Technology'>Information Technology</option>
+                </select>
+            </td></tr>
+        <tr>
+            <td >
+                <h5 >YEAR</h5>
+            </td>
+            <td>
+                <select class="form-control" name="year" style="width:250px;" >
+                    <option value='1'>1ST</option>
+                    <option value='2'>2ND</option>
+                    <option value='3'>3RD</option>
+                    <option value='4'>4TH</option>
+                </select>
+            </td></tr>
+
+        <tr>
+            <td >
+                    <h5 >Lecture No</h5>
+            </td>
+            <td>
+                <select class="form-control" name="lectureno" style="width:250px;" >
+                    <option value='1'>1ST</option>
+                    <option value='2'>2ND</option>
+                </select>
+            </td></tr>
+
+        <button type="submit">Login</button>
+    </table>
+</form>
 
 </body>
 </html>

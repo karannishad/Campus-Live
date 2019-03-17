@@ -41,6 +41,6 @@ public class UserController {
         imagefile.delete();
         studentRepository.save(student);
 
-        return new ModelAndView("success");
+        return new ModelAndView("home");
     }
 }

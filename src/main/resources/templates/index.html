@@ -1,10 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+    <script type="text/javascript" src="js/app.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <style>
+
+                body,
+                html {
+                  height: 100%;
+                  margin: 0;
+                }
+                .bg {
+                  /*--The image used--*/
+                  background-image:url("bg.jpg");
+                  /*--Full height--*/
+                  height: 100%;
+                  /*--Center and scale the image--*/
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                }
+                .col-md-12,.col-sm-12 {
+                  height: 400px;
+                  width: 400px;
+                  background-color: white;
+                  align-self: center;
+                 margin: 5% 35%;
+
+                  align-items: center;
+                  vertical-align: middle;
+                }
+
+                .form_heading {
+
+                  height: 70px;
+                  width: 100%;
+                  background-image: url("blue2.jpg");
+                  text-align: center;
+                  padding-top: 1%;
+                  color: blue;
+                  font-size: 1.5em;
+                  font-family: 'Poppins', sans-serif;
+                  opacity: 0;
+                }
+                label {
+                  font-size: 20px;
+                }
+                .inputs {
+                  margin-top: 55px;
+                }
+                .dropdown_checkbox {
+                  margin-left: 42px;
+                }
+                .inputs1 {
+                  width: 70%;
+                  height: 40px;
+                  border-style: none;
+                  border-bottom-style: solid;
+                  border-radius: 5px;
+
+                }
+                .input_text {
+                  text-align: center;
+                }
+                .form_button {
+                  text-align: center;
+                }
+                .btn {
+                  display: inline-block;
+                  padding: 6px 30px;
+                  margin-top: 10px;
+                  margin-bottom: 0;
+                  font-size: 14px;
+                  font-weight: normal;
+                  line-height: 1.42857143;
+                  text-align: center;
+                  white-space: nowrap;
+                  vertical-align: middle;
+
+                  cursor: pointer;
+
+                }
+                .inputs1:focus{
+                  outline: none;
+                }
+
+              </style>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
-<body>
-<a href="/log">Login</a>  <a href="/studentregistration">Sign Up</a>
+<body >
+<!--CONTAINER START-->
+<div   class="container-fluid bg">
+    <!--Form Start-->
+    <div  class="w3-card-4 row col-md-12 col-sm-12  " style="opacity:1;">
+        <!--HEADING START-->
+        <div class="row">
+            <h1 class="" style="color:blue;font-family:'Berkshire Swash' ;text-align:center;padding-top:40px;"><i class="fa fa-graduation-cap"></i>CampusLive</h1>
+        </div>
+        <!--HEADING END-->
+        <!--taking inputs start-->
+        <div class="inputs ">
+            <form action="Servlet1" method="post" class="form-inline">
+
+
+                <div class="form_button">
+                    <p>
+                        <a href="/log" class="btn btn-primary">LOGIN</a>
+                    </p>
+
+                </div>
+                <!--login button end-->
+                <div class="form_button">
+                    <p>
+                        <a href="/registration" class="btn btn-primary">SIGNUP</a>
+                    </p>
+
+                </div>
+            </form>
+
+        </div>
+        <!--taking inputs end-->
+    </div>
+    <!--FORM END-->
+
+</div>
+<!--CONTAINER END-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>

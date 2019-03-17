@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface StudentRepository extends JpaRepository<Student,String> {
 
 public Student findByEnrollId(String enrollId);
-
+public Student findByEnrollIdAndPassword(String enrollId,String Password);
 }

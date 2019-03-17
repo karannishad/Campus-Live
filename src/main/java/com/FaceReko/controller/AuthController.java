@@ -1,6 +1,7 @@
 package com.FaceReko.controller;
 
 import com.FaceReko.model.AttendanceRecord;
+import com.FaceReko.model.LoginData;
 import com.FaceReko.model.Student;
 import com.FaceReko.repository.StudentRepository;
 import org.json.JSONObject;
@@ -23,21 +24,31 @@ public class AuthController {
     @Autowired
     StudentRepository studentRepository;
 
-
-
+    @RequestMapping("/")
+    public String index(){
+        return "index";
+    }
     @RequestMapping("/checkLogin")
-    public String loginRequest(HttpSession httpSession){
-        Student student=studentRepository.findByEnrollId("0818IT151019");
+    public String loginRequest(@ModelAttribute LoginData loginData, HttpSession httpSession) {
+        Student student = studentRepository.findByEnrollIdAndPassword(loginData.getEnrollid(), loginData.getPassword());
+        if (student != null) {
+            httpSession.setAttribute("id", student.getEnrollId());
 
-
-            httpSession.setAttribute("id",student.getEnrollId());
         return "home";
-
+    }
+        return "login";
     }
     @RequestMapping("/log")
     public String login(){
 
-        return "login.html";
+        return "login";
+
+    }
+
+    @RequestMapping("/registration")
+    public String registraion(){
+
+        return "registration";
 
     }
     @RequestMapping("/studentregistration")

@@ -10,12 +10,15 @@ public class AttendanceRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String className;
+    private String teacherid;
 
-    private String fileName;
+    private String subject;
 
-    private String fileType;
+    private String branch;
 
+    private String year;
+
+    private String lectureno;
     @Lob
     private byte[] image;
 
@@ -23,40 +26,62 @@ public class AttendanceRecord {
 
     }
 
+    public AttendanceRecord(Long id, String teacherid, String subject, String branch, String year, String lectureno, byte[] image) {
+        this.id = id;
+        this.teacherid = teacherid;
+        this.subject = subject;
+        this.branch = branch;
+        this.year = year;
+        this.lectureno = lectureno;
+        this.image = image;
+    }
 
     public Long getId() {
         return id;
     }
 
-    public AttendanceRecord(String className, String fileName, String fileType, byte[] image) {
-        this.className = className;
-        this.fileName = fileName;
-        this.fileType = fileType;
-        this.image = image;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getClassName() {
-        return className;
+    public String getTeacherid() {
+        return teacherid;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setTeacherid(String teacherid) {
+        this.teacherid = teacherid;
     }
 
-    public String getFileName() {
-        return fileName;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
-    public String getFileType() {
-        return fileType;
+    public String getBranch() {
+        return branch;
     }
 
-    public void setFileType(String fileType) {
-        this.fileType = fileType;
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getLectureno() {
+        return lectureno;
+    }
+
+    public void setLectureno(String lectureno) {
+        this.lectureno = lectureno;
     }
 
     public byte[] getImage() {
@@ -65,9 +90,5 @@ public class AttendanceRecord {
 
     public void setImage(byte[] image) {
         this.image = image;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }
