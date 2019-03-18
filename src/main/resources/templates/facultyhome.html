@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Faculty Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <style>
+                   nav {
+                  color: white;
+                  background-color: DodgerBlue;
+                }
+                nav a {
+
+}
+ul{
+  padding-top: 10px;
+}
+
+                li {
+                  width: 150px;
+                }
+
+
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse ">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+
+
+            </button>
+            <a href="#">
+                <img class="img-responsive img-rounded" src="logos.png" alt="" style="width:250px;height:70px"></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right" style="margin-right:100px;">
+                <li>
+
+                    <a href="studentHome.jsp" class="btn btn-group">
+                        <span class="glyphicon glyphicon-home"></span>&nbsp; &nbsp;
+                        Home</a>
+                </li>
+                <li>
+
+                    <a href="#" class="btn">
+                        <span class="glyphicon glyphicon-bell"></span>&nbsp; &nbsp;
+                        Notifications</a>
+                </li>
+                <li class="dropdown">
+
+                    <a class="btn dropdown-toggle " data-toggle="dropdown" href="#">
+                        <span class="glyphicon glyphicon-user"></span>&nbsp; &nbsp;
+                        Profile
+                        <span class="caret"></span>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="card text-center" style="width:150px;color: black">
+                                    <div class="card-body">
+                                        <i class="glyphicon glyphicon-user" style="font-size: 75px;"></i>
+                                        <p class="card-text">Faculty</p>
+                                        <a href="showProfile.jsp" class="btn btn-primary btn-block">See Profile</a>
+                                        <a href="logout.jsp" class="btn btn-primary btn-block">LogOut</a>
+
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </a>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3 btn-group-vertical">
+            <a href="updateAtt.jsp" target="viewmain" class="btn btn-primary btn-block btn-lg">Update Attendance</a>
+            <a href="uploadAssignment.jsp" target="viewmain" class="btn btn-primary btn-block btn-lg">Upload
+                Assignment</a>
+            <a href="uploadRes.jsp" target="viewmain" class="btn btn-primary btn-block btn-lg">Upload Result</a>
+            <a href="" target="viewmain" class="btn btn-primary btn-block btn-lg">Access Library</a>
+        </div>
+        <div class="col-sm-9 col-md-9 col-lg-9" id="mainarea">
+            <iframe src="" height="450px" style="border:0;width:100%" name="viewmain"></iframe>
+        </div>
+    </div>
+</div>
+<footer class="page-footer" style="">
+    <div class="footer-copyright text-center">
+        &copy; 2018 Copyright :CampusLive
+
+    </div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+
+</html>

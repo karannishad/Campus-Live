@@ -1,8 +1,8 @@
 package com.FaceReko.controller;
 
 import com.FaceReko.credentials.Credentials;
-import com.FaceReko.model.Student;
-import com.FaceReko.repository.StudentRepository;
+import com.FaceReko.model.User;
+import com.FaceReko.repository.UserRepository;
 import com.amazonaws.services.s3.AmazonS3;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,7 @@ import java.io.IOException;
 public class UserController {
 
     @Autowired
-    StudentRepository studentRepository;
+    UserRepository userRepository;
 
     AmazonS3 amazonS3= Credentials.getS3Client();
     private static File convertMultiPartToFile(MultipartFile file) throws IOException {
@@ -33,13 +33,13 @@ public class UserController {
 
     @RequestMapping("/setimage")
     public ModelAndView setImage(@RequestParam("image")MultipartFile image, HttpSession httpSession)throws Exception{
-        Student student =studentRepository.findByEnrollId((String) httpSession.getAttribute("id"));
+        User user = userRepository.findByEnrollId((String) httpSession.getAttribute("id"));
         File imagefile=convertMultiPartToFile(image);
         amazonS3.putObject("imagefacereko","new",imagefile);
-        student.setImage(image.getBytes());
+        user.setImage(image.getBytes());
 
         imagefile.delete();
-        studentRepository.save(student);
+        userRepository.save(user);
 
         return new ModelAndView("home");
     }

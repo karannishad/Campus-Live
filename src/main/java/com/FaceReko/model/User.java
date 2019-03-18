@@ -1,17 +1,14 @@
 package com.FaceReko.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-public class  Student {
+public class User {
 
     @Id
     @NotBlank
@@ -29,23 +26,54 @@ public class  Student {
 
 
     private String gender;
-    private String branch;
+    private String department;
     @Email
     private String email;
     @Lob
     private byte[] image;
 
+    private String role;
 
-    public Student()
-    {
+
+
+    public User() {
 
     }
 
+    public User(@NotBlank @Size(max = 12) String enrollId, @NotBlank @Size(max = 100) String password, String name, Long phone, String gender, String department, @Email String email, byte[] image, String role) {
+        this.enrollId = enrollId;
+        this.password = password;
+        this.name = name;
+        this.phone = phone;
+        this.gender = gender;
+        this.department = department;
+        this.email = email;
+        this.image = image;
+        this.role = role;
+    }
 
+    public String getDepartment() {
+        return department;
+    }
 
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getEnrollId() {
         return enrollId;
+    }
+
+    public void setEnrollId(String enrollId) {
+        this.enrollId = enrollId;
     }
 
     public byte[] getImage() {
@@ -56,26 +84,9 @@ public class  Student {
         this.image = image;
     }
 
-    public Student(@NotBlank @Size(max = 12) String enrollId, @NotBlank @Size(max = 100) String password, String name, Long phone, String gender, String branch, @Email String email, byte[] image) {
-        this.enrollId = enrollId;
-        this.password = password;
-        this.name = name;
-        this.phone = phone;
-        this.gender = gender;
-        this.branch = branch;
-        this.email = email;
-        try{
-        this.image = image;}catch (Exception r){}
-    }
-
-    public void setEnrollId(String enrollId) {
-        this.enrollId = enrollId;
-    }
-
     public String getPassword() {
         return password;
     }
-
 
 
     public void setPassword(String password) {
@@ -107,13 +118,7 @@ public class  Student {
         this.gender = gender;
     }
 
-    public String getBranch() {
-        return branch;
-    }
 
-    public void setBranch(String branch) {
-        this.branch = branch;
-    }
 
     public String getEmail() {
         return email;
@@ -122,8 +127,6 @@ public class  Student {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
 
 
 }
