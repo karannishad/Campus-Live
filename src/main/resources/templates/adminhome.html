@@ -4,31 +4,27 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Faculty Home</title>
+    <title>Admin Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
     <style>
-                   nav {
+
+                nav {
                   color: white;
                   background-color: DodgerBlue;
                 }
-                nav a {
 
-}
-ul{
-  padding-top: 10px;
-}
+                ul{
+                  padding-top: 10px;
+                }
 
                 li {
                   width: 150px;
                 }
 
-
     </style>
 </head>
 <body>
-
 
 <nav class="navbar navbar-inverse ">
     <div class="container-fluid">
@@ -47,37 +43,43 @@ ul{
             <ul class="nav navbar-nav navbar-right" style="margin-right:100px;">
                 <li>
 
-                    <a href="studentHome.jsp" class="btn btn-group">
-                        <span class="glyphicon glyphicon-home"></span>&nbsp; &nbsp;
+                    <a href="#" class="btn btn-group">
+                        <span class="glyphicon glyphicon-home"></span>
                         Home</a>
                 </li>
                 <li>
 
                     <a href="#" class="btn">
-                        <span class="glyphicon glyphicon-bell"></span>&nbsp; &nbsp;
+                        <span class="glyphicon glyphicon-bell"></span>
                         Notifications</a>
                 </li>
                 <li class="dropdown">
 
                     <a class="btn dropdown-toggle " data-toggle="dropdown" href="#">
-                        <span class="glyphicon glyphicon-user"></span>&nbsp; &nbsp;
+                        <span class="glyphicon glyphicon-user"></span>
                         Profile
                         <span class="caret"></span>
-
-                        <ul class="dropdown-menu">
-                            <li>
-                                <div class="card text-center" style="width:150px;color: black">
-                                    <div class="card-body">
-                                        <i class="glyphicon glyphicon-user" style="font-size: 75px;"></i>
-                                        <p class="card-text">Faculty</p>
-                                        <a href="showProfile.jsp" class="btn btn-primary btn-block">See Profile</a>
-                                        <a href="logout.jsp" class="btn btn-primary btn-block">LogOut</a>
-
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
                     </a>
+                    <ul class="dropdown-menu">
+                        <li>
+
+                            <div class="card text-center" style="width:150px">
+
+
+                                <div class="card-body">
+                                    <i class="glyphicon glyphicon-user" style="font-size: 75px;"></i>
+                                    <h4 class="card-title">John Doe</h4>
+                                    <p class="card-text">Admin</p>
+                                    <a href="#" class="btn btn-primary btn-block">See Profile</a>
+                                    <a href="logout.jsp" class="btn btn-primary btn-block">LogOut</a>
+
+                                </div>
+                            </div>
+
+                        </li>
+
+
+                    </ul>
             </ul>
         </div>
     </div>
@@ -85,20 +87,28 @@ ul{
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-3 col-lg-3 btn-group-vertical">
-            <a href="update.html" target="viewmain" class="btn btn-primary btn-block btn-lg">Update Attendance</a>
-            <a href="#" target="viewmain" class="btn btn-primary btn-block btn-lg">Upload
-                Assignment</a>
-            <a href="#" target="viewmain" class="btn btn-primary btn-block btn-lg">Upload Result</a>
-            <a href="#" target="viewmain" class="btn btn-primary btn-block btn-lg">Access Library</a>
+        <div class="col-sm-3 col-md-3 col-lg-3 btn-group-vertical  ">
+            <a href="registerFaculty.jsp" class="btn btn-primary btn-block btn-lg" target="viewmain">
+                Register New User
+
+            </a>
+
+            <a href="deleteuser.jsp" class="btn btn-primary btn-block btn-lg" target="viewmain">
+                Delete User
+            </a>
+            <a href="viewassignment.jsp" class="btn btn-primary btn-block btn-lg" target="viewmain">
+                View Profile
+            </a>
+
+
         </div>
         <div class="col-sm-9 col-md-9 col-lg-9" id="mainarea">
-            <iframe src="" height="450px" style="border:0;width:100%" name="viewmain"></iframe>
+            <iframe src="" width="100%" height="450px" style="border:0" name="viewmain"></iframe>
         </div>
     </div>
 </div>
-<footer class="page-footer" style="">
-    <div class="footer-copyright text-center">
+<footer class="page-footer font-small blue pt-4 mt-4" style="">
+    <div class="footer-copyright py-3 text-center">
         &copy; 2018 Copyright :CampusLive
 
     </div>
