@@ -1,8 +1,10 @@
 package com.FaceReko.controller;
 
 import com.FaceReko.awscollection.CompareFaces;
+import com.FaceReko.model.Attendance;
 import com.FaceReko.model.AttendanceRecord;
 import com.FaceReko.repository.AttendanceRecordRepo;
+import com.FaceReko.repository.AttendanceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,6 +25,8 @@ public class ActionController {
     @Autowired
     AttendanceRecordRepo attendanceRecordRepo;
 
+    @Autowired
+    AttendanceRepo attendanceRepo;
 
 
     @RequestMapping("/uploadAttendance")
@@ -45,6 +50,14 @@ public class ActionController {
             attendanceRecord.setImage(file.getBytes());
             attendanceRecordRepo.save(attendanceRecord);
             List<String> result = CompareFaces.getAttendance(attendanceRecord);
+            List<Attendance> attendanceList=new ArrayList<>();
+
+            for(String id:result)
+            {
+                attendanceList.add(new Attendance(id,attendanceRecord));
+            }
+
+            attendanceRepo.saveAll(attendanceList);
             mav=new ModelAndView("success");
             mav.addObject("studentList",result);
             return mav;

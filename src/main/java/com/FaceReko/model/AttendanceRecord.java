@@ -3,6 +3,7 @@ package com.FaceReko.model;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class AttendanceRecord {
@@ -22,6 +23,8 @@ public class AttendanceRecord {
     @Lob
     private byte[] image;
 
+    @OneToMany(mappedBy = "attendanceRecord")
+    private Set<Attendance> attendanceSet;
     public AttendanceRecord() {
 
     }
