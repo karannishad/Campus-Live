@@ -9,23 +9,27 @@ public class Attendance {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String studentid;
+    private String studentId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="fk_refer")
     private AttendanceRecord attendanceRecord;
 
+    public Attendance(){
+
+    }
+
     public Attendance(String studentid, AttendanceRecord attendanceRecord) {
-        this.studentid = studentid;
+        this.studentId = studentid;
         this.attendanceRecord = attendanceRecord;
     }
 
     public String getStudentid() {
-        return studentid;
+        return studentId;
     }
 
     public void setStudentid(String studentid) {
-        this.studentid = studentid;
+        this.studentId = studentid;
     }
 
     public AttendanceRecord getAttendanceRecord() {

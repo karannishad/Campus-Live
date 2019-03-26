@@ -18,10 +18,7 @@ public class AuthController {
     @Autowired
     UserRepository userRepository;
 
-    @RequestMapping("/")
-    public String index() {
-        return "index";
-    }
+
 
     @RequestMapping("/checkLogin")
     public String loginRequest(@ModelAttribute LoginData loginData, HttpSession httpSession) {

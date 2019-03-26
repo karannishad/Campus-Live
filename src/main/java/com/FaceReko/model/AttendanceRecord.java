@@ -3,6 +3,7 @@ package com.FaceReko.model;
 
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.Set;
 
 @Entity
@@ -22,6 +23,8 @@ public class AttendanceRecord {
     private String lectureno;
     @Lob
     private byte[] image;
+    @Column(name="timestamp", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
+    private Date timestamp;
 
     @OneToMany(mappedBy = "attendanceRecord")
     private Set<Attendance> attendanceSet;

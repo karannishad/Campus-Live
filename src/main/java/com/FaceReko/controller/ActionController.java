@@ -16,8 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class ActionController {
@@ -51,13 +50,13 @@ public class ActionController {
             attendanceRecordRepo.save(attendanceRecord);
             List<String> result = CompareFaces.getAttendance(attendanceRecord);
             List<Attendance> attendanceList=new ArrayList<>();
-
             for(String id:result)
             {
                 attendanceList.add(new Attendance(id,attendanceRecord));
             }
+            Set<Attendance> attendanceSet =new HashSet<>(attendanceList);
 
-            attendanceRepo.saveAll(attendanceList);
+            attendanceRepo.saveAll(attendanceSet);
             mav=new ModelAndView("success");
             mav.addObject("studentList",result);
             return mav;
@@ -69,4 +68,14 @@ public class ActionController {
         return mav;
 
     }
+
+    @RequestMapping("/getAttendance")
+    public void getAttendance(HttpSession httpSession){
+
+        List<Attendance> attendanceList=attendanceRepo.findByStudentId((String)httpSession.getAttribute("new"));
+        Collections.reverse(attendanceList);
+        ModelAndView modelAndView=new ModelAndView("showAttendance");
+        modelAndView.addObject(attendanceList);
+    }
+
 }
