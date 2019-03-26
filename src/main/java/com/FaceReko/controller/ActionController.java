@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.jws.WebParam;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
@@ -23,10 +22,8 @@ public class ActionController {
     @Autowired
     AttendanceRecordRepo attendanceRecordRepo;
 
-    @RequestMapping
-    public String upload(){
-        return "upload";
-    }
+
+
     @RequestMapping("/uploadAttendance")
     public ModelAndView uploadAttendance(@ModelAttribute AttendanceRecord attendanceRecord, HttpSession httpSession){
         ModelAndView modelAndView=null;
