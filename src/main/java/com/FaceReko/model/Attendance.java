@@ -11,7 +11,7 @@ public class Attendance {
 
     private String studentId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="fk_refer")
     private AttendanceRecord attendanceRecord;
 
@@ -24,12 +24,20 @@ public class Attendance {
         this.attendanceRecord = attendanceRecord;
     }
 
-    public String getStudentid() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentid(String studentid) {
-        this.studentId = studentid;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
     public AttendanceRecord getAttendanceRecord() {

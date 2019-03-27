@@ -26,6 +26,14 @@ public class AttendanceRecord {
     @Column(name="timestamp", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     private Date timestamp;
 
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+
     @OneToMany(mappedBy = "attendanceRecord")
     private Set<Attendance> attendanceSet;
     public AttendanceRecord() {

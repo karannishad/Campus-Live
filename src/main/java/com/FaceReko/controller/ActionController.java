@@ -7,6 +7,7 @@ import com.FaceReko.repository.AttendanceRecordRepo;
 import com.FaceReko.repository.AttendanceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,12 +71,13 @@ public class ActionController {
     }
 
     @RequestMapping("/getAttendance")
-    public void getAttendance(HttpSession httpSession){
+    public String getAttendance(Model model,HttpSession httpSession){
 
-        List<Attendance> attendanceList=attendanceRepo.findByStudentId((String)httpSession.getAttribute("new"));
+        List<Attendance> attendanceList=attendanceRepo.findByStudentId("Student2");
         Collections.reverse(attendanceList);
-        ModelAndView modelAndView=new ModelAndView("showAttendance");
-        modelAndView.addObject(attendanceList);
+        model.addAttribute("attendanceList",attendanceList);
+
+        return "showAttendance";
     }
 
 }
