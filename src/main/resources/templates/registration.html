@@ -3,6 +3,11 @@
 <head>
     <meta Content-Type="application/json">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -13,11 +18,11 @@
 
         <tr class="thead-dark">
             <td colspan=2>
-                <center><font size=4><b>Student Registration Form</b></font></center>
+                <center><font size=4><b>Registration New User</b></font></center>
             </td>
         </tr>
         <tr>
-            <td>Enrollment No</td>
+            <td>Login ID</td>
             <td><input type="text" name="enrollId"
                        size="30" required></td>
         </tr>
@@ -31,14 +36,14 @@
 
 
         <tr>
-            <td>Sex</td>
+            <td>Gender</td>
             <td><input type="radio" name="gender" value="male" size="10">Male
                 <input type="radio" name="gender" value="Female" size="10">Female</td>
         </tr>
 
         <tr>
             <td>Branch</td>
-            <td><select name="branch" required>
+            <td><select name="branch"  required>
                 <option value="-1" selected>select..</option>
                 <option value="IT">IT</option>
                 <option value="CS">CS</option>
@@ -63,6 +68,15 @@
             <td><input type="text" name="phone" id="mobileno" size="30" required></td>
         </tr>
 
+
+        <tr>
+            <td>Role</td>
+            <td><select name="role" required>
+                <option value="-1" selected>Select Role</option>
+                <option value="Faculty">Faculty</option>
+                <option value="Student">Student</option>
+            </select></td>
+        </tr>
         <tr>
             <td><input type="reset" class="btn btn-info btn-block"></td>
             <td colspan="2"><input type="submit" value="Submit Form" class="btn btn-primary btn-block" /></td>

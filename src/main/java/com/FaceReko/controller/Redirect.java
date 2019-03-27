@@ -14,4 +14,7 @@ public class Redirect {
     public String upload(){
     return "upload";
 }
+
+
+
 }
