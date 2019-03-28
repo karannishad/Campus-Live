@@ -40,28 +40,17 @@
             </td>
         </tr>
         <tr>
-            <td >
-                <h5>BRANCH</h5>
-            </td>
-            <td>
-                <select class="form-control" name="branch" style="width:250px;" >
-                    <option value='Computer Science'>Computer Science</option>
-                    <option value='Information Technology'>Information Technology</option>
-                </select>
-            </td></tr>
         <tr>
-            <td >
-                <h5 >YEAR</h5>
-            </td>
+            <td>Batch</td>
             <td>
-                <select class="form-control" name="year" style="width:250px;" >
-                    <option value='1'>1ST</option>
-                    <option value='2'>2ND</option>
-                    <option value='3'>3RD</option>
-                    <option value='4'>4TH</option>
-                </select>
-            </td></tr>
+                <select name="batch" >
+                    <option value=""> -- </option>
 
+                    <option th:each="user: ${classlist}" th:value="${user.batchName}" th:text="${user.batchName}">
+                    </option>
+                </select>
+            </td>
+        </tr>
         <tr>
             <td >
                     <h5 >Lecture No</h5>
@@ -73,7 +62,9 @@
                 </select>
             </td></tr>
 
-        <button type="submit">Login</button>
+        <tr>
+            <td><input type="reset" class="btn btn-info btn-block"></td>
+            <td colspan="2"><input type="submit" value="Submit Form" class="btn btn-primary btn-block" /></td></tr>
     </table>
 </form>
 

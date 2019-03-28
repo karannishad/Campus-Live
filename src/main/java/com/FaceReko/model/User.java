@@ -1,5 +1,8 @@
 package com.FaceReko.model;
 
+
+
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -26,7 +29,9 @@ public class User {
 
 
     private String gender;
-    private String department;
+
+
+    private String batch;
     @Email
     private String email;
     @Lob
@@ -35,30 +40,31 @@ public class User {
     private String role;
 
 
-
     public User() {
 
     }
 
-    public User(@NotBlank @Size(max = 12) String enrollId, @NotBlank @Size(max = 100) String password, String name, Long phone, String gender, String department, @Email String email, byte[] image, String role) {
+    public User(@NotBlank @Size(max = 12) String enrollId, @NotBlank @Size(max = 100) String password, String name, Long phone, String gender, String batch, @Email String email, byte[] image, String role) {
         this.enrollId = enrollId;
         this.password = password;
         this.name = name;
         this.phone = phone;
         this.gender = gender;
-        this.department = department;
+        this.batch = batch;
         this.email = email;
         this.image = image;
         this.role = role;
     }
 
-    public String getDepartment() {
-        return department;
+    public String getBatch() {
+        return batch;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setBatch(String batch) {
+        this.batch = batch;
     }
+
+
 
     public String getRole() {
         return role;

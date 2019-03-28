@@ -16,9 +16,7 @@ public class AttendanceRecord {
 
     private String subject;
 
-    private String branch;
-
-    private String year;
+    private String batch;
 
     private String lectureno;
     @Lob
@@ -40,14 +38,17 @@ public class AttendanceRecord {
 
     }
 
-    public AttendanceRecord(Long id, String teacherid, String subject, String branch, String year, String lectureno, byte[] image) {
+
+
+    public AttendanceRecord(Long id, String teacherid, String subject, String batch, String lectureno, byte[] image) {
         this.id = id;
         this.teacherid = teacherid;
         this.subject = subject;
-        this.branch = branch;
-        this.year = year;
+        this.batch = batch;
+
         this.lectureno = lectureno;
         this.image = image;
+
     }
 
     public Long getId() {
@@ -74,21 +75,15 @@ public class AttendanceRecord {
         this.subject = subject;
     }
 
-    public String getBranch() {
-        return branch;
+    public String getBatch() {
+        return batch;
     }
 
-    public void setBranch(String branch) {
-        this.branch = branch;
+    public void setBatch(String batch) {
+        this.batch = batch;
     }
 
-    public String getYear() {
-        return year;
-    }
 
-    public void setYear(String year) {
-        this.year = year;
-    }
 
     public String getLectureno() {
         return lectureno;

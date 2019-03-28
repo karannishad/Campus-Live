@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -73,7 +72,7 @@ public class ActionController {
     @RequestMapping("/getAttendance")
     public String getAttendance(Model model,HttpSession httpSession){
 
-        List<Attendance> attendanceList=attendanceRepo.findByStudentId("Student2");
+        List<Attendance> attendanceList=attendanceRepo.findByStudentId((String)httpSession.getAttribute("id"));
         Collections.reverse(attendanceList);
         model.addAttribute("attendanceList",attendanceList);
 

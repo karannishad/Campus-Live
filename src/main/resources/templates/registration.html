@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta Content-Type="application/json">
     <title>Title</title>
@@ -41,16 +41,20 @@
                 <input type="radio" name="gender" value="Female" size="10">Female</td>
         </tr>
 
-        <tr>
-            <td>Branch</td>
-            <td><select name="branch"  required>
-                <option value="-1" selected>select..</option>
-                <option value="IT">IT</option>
-                <option value="CS">CS</option>
-                <option value="ME">ME</option>
-            </select></td>
-        </tr>
 
+
+
+        <tr>
+            <td>Batch</td>
+            <td>
+            <select name="batch" >
+                <option value=""> -- </option>
+
+                <option th:each="user: ${classlist}" th:value="${user.batchName}" th:text="${user.batchName}">
+            </option>
+            </select>
+            </td>
+        </tr>
         <tr>
             <td>EmailId</td>
             <td><input type="text" name="email" id="emailid" size="30" required></td>
@@ -79,6 +83,6 @@
         </tr>
         <tr>
             <td><input type="reset" class="btn btn-info btn-block"></td>
-            <td colspan="2"><input type="submit" value="Submit Form" class="btn btn-primary btn-block" /></td>
+            <td colspan="2"><input type="submit" value="Submit Form" class="btn btn-primary btn-block" /></td></tr></table>
 </body>
 </html>

@@ -33,12 +33,12 @@ public class CompareFaces {
 
         Image target=new Image()
                 .withBytes(targetImageBytes);
-        ListObjectsV2Result result = s3.listObjectsV2("imagefacereko");
+        ListObjectsV2Result result = s3.listObjectsV2(attendanceRecord.getBatch());
         List<S3ObjectSummary> objects = result.getObjectSummaries();
         for (S3ObjectSummary os: objects) {
             CompareFacesRequest request = new CompareFacesRequest()
                     .withSourceImage(new Image().withS3Object(new S3Object()
-                            .withBucket("imagefacereko")
+                            .withBucket(attendanceRecord.getBatch())
                             .withName(os.getKey())))
                     .withTargetImage(target)
                     .withSimilarityThreshold(similarityThreshold);
