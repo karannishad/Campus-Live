@@ -48,8 +48,16 @@ public class AuthController {
         ModelAndView mav = null;
         httpSession.setAttribute("newuser", user.getEnrollId());
         userRepository.save(user);
-        mav = new ModelAndView("setImage");
-        return mav;
+        if(user.getRole().equals("Faculty")){
+
+            return new ModelAndView("response").addObject("response","User Added successfully");
+
+        }
+       else {
+            mav = new ModelAndView("setImage");
+
+            return mav;
+       }
     }
 
     @RequestMapping("/logout")

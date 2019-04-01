@@ -48,7 +48,8 @@ public class UserController {
         imagefile.delete();
         userRepository.save(user);
 
-        return new ModelAndView("home");
+        return new ModelAndView("home").addObject("response","User "+user.getEnrollId()
+                + " created successfully");
     }
 
 
