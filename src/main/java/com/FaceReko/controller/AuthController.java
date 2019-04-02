@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -20,10 +21,12 @@ public class AuthController {
 
 
     @RequestMapping("/checkLogin")
-    public String loginRequest(@ModelAttribute LoginData loginData, HttpSession httpSession) {
+    public String loginRequest(@ModelAttribute LoginData loginData, HttpSession httpSession, HttpServletResponse response) {
         User user = userRepository.findByEnrollIdAndPassword(loginData.getEnrollid(), loginData.getPassword());
+        response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
         if (user != null) {
             httpSession.setAttribute("id", user.getEnrollId());
+            httpSession.setAttribute("name",user.getName());
             if(user.getRole().equals("Faculty")){
                 return "facultyhome";
             }

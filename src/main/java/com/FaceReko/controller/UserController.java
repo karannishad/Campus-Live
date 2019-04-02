@@ -29,17 +29,22 @@ public class UserController {
     BatchRepo batchRepo;
 
     AmazonS3 amazonS3= Credentials.getS3Client();
-    private static File convertMultiPartToFile(MultipartFile file) throws IOException {
-        File convFile = new File(file.getOriginalFilename());
+    private static File convertMultiPartToFile(MultipartFile file){
+        try{File convFile = new File(file.getOriginalFilename());
         FileOutputStream fos = new FileOutputStream(convFile);
         fos.write(file.getBytes());
         fos.close();
         return convFile;
+        }
+        catch(Exception e){
+        	return new File("");
+        }
+        
     }
 
     @RequestMapping("/setimage")
-    public ModelAndView setImage(@RequestParam("image")MultipartFile image, HttpSession httpSession)throws Exception{
-        User user = userRepository.findByEnrollId((String) httpSession.getAttribute("newuser"));
+    public ModelAndView setImage(@RequestParam("image")MultipartFile image, HttpSession httpSession){
+    	try{ User user = userRepository.findByEnrollId((String) httpSession.getAttribute("newuser"));
         File imagefile=convertMultiPartToFile(image);
         String bucketName=user.getBatch();
         amazonS3.putObject(bucketName,user.getEnrollId(),imagefile);
@@ -47,9 +52,12 @@ public class UserController {
 
         imagefile.delete();
         userRepository.save(user);
-
+    	
         return new ModelAndView("home").addObject("response","User "+user.getEnrollId()
                 + " created successfully");
+}catch(Exception e) {
+	return new ModelAndView("home").addObject("response","Failed to create User");
+    	}
     }
 
 
