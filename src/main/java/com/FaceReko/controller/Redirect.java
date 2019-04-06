@@ -24,6 +24,13 @@ public class Redirect {
 
     }
 
+    @RequestMapping("/uploadAssignmentRedirect")
+    public ModelAndView uploadAssignmentRedirect() {
+        ModelAndView modelAndView=new ModelAndView("uploadAssignment");
+        modelAndView.addObject("classlist",batchRepo.findAll());
+        return modelAndView;
+
+    }
     @RequestMapping("/log")
     public String login() {
 

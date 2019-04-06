@@ -1,10 +1,14 @@
 package com.FaceReko.controller;
 
 import com.FaceReko.awscollection.CompareFaces;
+import com.FaceReko.model.Assignment;
 import com.FaceReko.model.Attendance;
 import com.FaceReko.model.AttendanceRecord;
+import com.FaceReko.model.User;
+import com.FaceReko.repository.AssignmentRepo;
 import com.FaceReko.repository.AttendanceRecordRepo;
 import com.FaceReko.repository.AttendanceRepo;
+import com.FaceReko.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,11 +26,16 @@ import java.util.*;
 public class ActionController {
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     AttendanceRecordRepo attendanceRecordRepo;
 
     @Autowired
     AttendanceRepo attendanceRepo;
 
+    @Autowired
+    AssignmentRepo assignmentRepo;
 
     @RequestMapping("/uploadAttendance")
     public ModelAndView uploadAttendance(@ModelAttribute AttendanceRecord attendanceRecord, HttpSession httpSession){
@@ -38,6 +47,8 @@ public class ActionController {
             return modelAndView;
 
     }
+
+
 
     @RequestMapping("/uploadAttendanceImage")
     public ModelAndView uploadAttendanceImage(@RequestParam("image") MultipartFile file, HttpSession httpSession){
@@ -78,6 +89,56 @@ public class ActionController {
 
         return "showAttendance";
     }
+
+    @RequestMapping("/uploadAssignment")
+    public ModelAndView uploadAssignment(@ModelAttribute Assignment assignment,HttpSession httpSession){
+
+        if(assignment!=null){
+
+            assignmentRepo.save(assignment);
+            httpSession.setAttribute("assignmentId",assignment.getId());
+            return new ModelAndView("uploadAssignmenDoc");
+        }
+
+        return new ModelAndView("uploadAssignment");
+
+
+    }
+
+
+    @RequestMapping("/uploadAssignmentDoc")
+    public ModelAndView uploadAssignmentDoc(@RequestParam("fileField") MultipartFile fileField, HttpSession httpSession){
+        ModelAndView mav =null;
+        if(!fileField.isEmpty())
+        {try {
+
+            Assignment assignment=assignmentRepo.findById((Long)httpSession.getAttribute("assignmentId")).get();
+
+            assignment.setFileField(fileField.getBytes());
+            assignmentRepo.save(assignment);
+
+            return new ModelAndView("response").addObject("response","Assignment Uploaded Successfully.");
+        }
+        catch (Exception e){
+
+        }}
+
+            return new ModelAndView("uploadAssignmenDoc");
+
+
+    }
+
+    @RequestMapping("/showAssignment")
+    public String getAssignment(Model model,HttpSession httpSession){
+        User user=userRepository.findByEnrollId((String)httpSession.getAttribute("id"));
+        List<Assignment> assignmentList=assignmentRepo.findByBatch(user.getBatch());
+        model.addAttribute("assignmentList",assignmentList);
+
+        return "showAssignment";
+    }
+
+
+
 
 
 

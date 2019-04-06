@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Assignment</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+<form action="/uploadAssignment" method="post" >
+
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td colspan="2" align="center"><h2>Upload Assignment</h2></td>
+        </tr>
+        <tr>
+            <td>Subject</td>
+            <td>
+                <input type="text" name="subject"></td>
+        </tr>
+        <tr>
+            <td>Batch</td>
+            <td>
+                <select name="batch" >
+                    <option value=""> -- </option>
+
+                    <option th:each="user: ${classlist}" th:value="${user.batchName}" th:text="${user.batchName}">
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Date of Submission(dd/MM/yyyy)</td>
+            <td><input type="text" name="dos"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" name="button" id="button" value="Submit"class="btn btn-block btn-primary">
+            </td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>
